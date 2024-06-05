@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Tp2AAT{
 
@@ -14,7 +15,14 @@ namespace Tp2AAT{
             this.nombre = crearNombre();
             this.costo = crearCosto();
             this.precio = calcularPrecio();
-            this.stock = 0;
+            this.stock = definirStock();
+        }
+
+        public Producto(string nombre, float costo, int stock){
+            this.nombre = nombre;
+            this.costo = costo;
+            this.precio = calcularPrecio();
+            this.stock = stock;
         }
 
         private string crearNombre(){
@@ -45,6 +53,26 @@ namespace Tp2AAT{
             return this.costo + (float)(this.costo * 0.3);
         }
 
+        private int definirStock(){
+            Console.WriteLine("Ingrese el stock del producto");
+            while (true) {
+                int stock = int.Parse(Console.ReadLine());
+                if (stock >= 0) {
+                    return stock;
+                } else {
+                    Console.WriteLine("El stock no puede ser negativo");
+                }
+            } 
+        }
+
+        public void quitarStock(int cantidad){
+            this.stock -= cantidad;
+        }
+
+        public void agregarStock(int cantidad){
+            this.stock += cantidad;
+        }
+
         public string getNombre(){
             return this.nombre;
         }
@@ -59,6 +87,10 @@ namespace Tp2AAT{
 
         public int getStock(){
             return this.stock;
+        }
+
+        public string getInfo(){
+            return "Nombre: " + this.getNombre() + " | Precio: " + this.getPrecio() + " | Stock: " + this.getStock();
         }
     }
 }
