@@ -5,22 +5,23 @@ namespace Tp2AAT{
     public class Producto{
 
         private string nombre;
-        private int precio;
-        private int costo;       
+        private float precio;
+        private float costo;       
         private int stock;
 
+    
         public Producto(){
             this.nombre = crearNombre();
             this.costo = crearCosto();
             this.precio = calcularPrecio();
-            this.stock = stock;
+            this.stock = 0;
         }
 
         private string crearNombre(){
             Console.WriteLine("Ingrese el nombre del producto");
             while (true) {
                 string nombre = Console.ReadLine();
-                if (nombre.Length != null) {
+                if (nombre.Length != 0) {
                     return nombre;
                 } else {
                     Console.WriteLine("El nombre no puede estar vacio");
@@ -28,11 +29,11 @@ namespace Tp2AAT{
             } 
         }
 
-        private double crearCosto(){
+        private float crearCosto(){
             Console.WriteLine("Ingrese el costo del producto");
             while (true) {
-                int costo = int.Parse(Console.ReadLine());
-                if (costo != null) {
+                float costo = float.Parse(Console.ReadLine());
+                if (costo != 0) {
                     return costo;
                 } else {
                     Console.WriteLine("El costo no puede estar vacio");
@@ -40,19 +41,24 @@ namespace Tp2AAT{
             } 
         }
 
-        private int calcularPrecio(){
-            return this.costo + (this.costo * 0.3);
+        private float calcularPrecio(){
+            return this.costo + (float)(this.costo * 0.3);
+        }
+
+        public string getNombre(){
+            return this.nombre;
+        }
+
+        public float getCosto(){
+            return this.costo;
+        }
+
+        public float getPrecio(){
+            return this.precio;
+        }
+
+        public int getStock(){
+            return this.stock;
         }
     }
-}
-
-class Program {
-    static void Main (string[] args){
-        Producto product = new Producto();
-        Console.WriteLine(product.nombre);
-        Console.WriteLine(product.costo);
-        Console.WriteLine(product.precio);
-        Console.WriteLine(product.stock);
-    }
-
 }
