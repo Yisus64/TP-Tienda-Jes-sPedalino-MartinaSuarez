@@ -66,7 +66,7 @@ namespace Tp2AAT{
         }
 
         public void quitarStock(int cantidad){
-            this.stock -= cantidad;
+            this.stock = this.stock - cantidad;
         }
 
         public void agregarStock(int cantidad){

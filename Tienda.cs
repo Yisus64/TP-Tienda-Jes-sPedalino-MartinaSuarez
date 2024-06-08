@@ -6,7 +6,7 @@ namespace Tp2AAT
     public class Tienda
     {
         public List<Producto> productos = new List<Producto>();
-        private float caja = 0;
+        private float caja = 2000000;
 
         public static Tienda crearTienda(Tienda tienda){ 
             tienda.agregarProductoTiendaDef(new Producto("Desodorante", 5000, 50));
@@ -62,21 +62,27 @@ namespace Tp2AAT
                 Console.WriteLine("No hay suficiente dinero");
                 return -1;
             } else {
-                dinero -= carrito.getSubtotal();
-                this.caja += carrito.getSubtotal();
-            }
+                    dinero -= carrito.getSubtotal();
+                    this.caja += carrito.getSubtotal();
+                    carrito.vaciarCarrito();
+                }          
+            
             if (dinero == 0) {
-            Console.WriteLine("Gracias por su compra");
-            return dinero;
+                Console.WriteLine("Gracias por su compra");
+                return dinero;
             } else {
-                Console.WriteLine("Su vuelto es de: " + dinero);
+                Console.WriteLine("Gracias por su compra, su vuelto es de: " + dinero);
                 return dinero;
         }
 
         }
 
-        public List<Producto> getProductos(){
-            return this.productos;
+        public void getProductos(){
+            int i = 0;
+            foreach (Producto producto in this.productos){
+                Console.WriteLine($"{i}" + ": " + producto.getInfo());
+                i++;
+            }
         }
 
         public float getCaja(){

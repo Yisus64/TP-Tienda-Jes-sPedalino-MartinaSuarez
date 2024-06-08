@@ -1,33 +1,25 @@
 using System;
 using System.Collections.Generic;
 
-namespace Tp2AAT
-{
-    class Program {
-
-                private static Tienda tienda = Tienda.crearTienda(new Tienda());
-                private static Carrito carrito = new Carrito();
-
-                public static void Main(string[] args) {
-                    foreach (Producto producto in tienda.getProductos()){
-                    Console.WriteLine(producto.getInfo());
-                }
-                carrito.agregarCarrito(tienda.productos[1], 3, tienda.productos);
-                carrito.agregarCarrito(tienda.productos[2], 1, tienda.productos);
-                carrito.agregarCarrito(tienda.productos[3], 1, tienda.productos);
-                carrito.agregarCarrito(tienda.productos[4], 1, tienda.productos);
-                Console.WriteLine(carrito.getSubtotal());
-                carrito.quitarCarrito(tienda.productos[1], 2, tienda.productos);
-                carrito.quitarCarrito(tienda.productos[4], 1, tienda.productos);
-                carrito.quitarCarrito(tienda.productos[5], 1, tienda.productos);
-                Console.WriteLine(carrito.getSubtotal());
-                Console.WriteLine(tienda.cobrar(carrito, 2000000));
-
-                tienda.agregarProductoTienda();
-                foreach (Producto producto in tienda.getProductos()){
-                    Console.WriteLine(producto.getInfo());
-                }
+namespace Tp2AAT{
+    class Program { 
+        private static Tienda tienda = Tienda.crearTienda(new Tienda());
+        private static Carrito carrito = new Carrito();
+        private static Cliente cliente = new Cliente();
+        private static Vendedor vendedor = new Vendedor();
+        private static int opcion = 0;   
+        public static void Main(string[] args) {
+            Console.WriteLine("Bienvenido a nuestra tienda, es usted\n 1: Cliente \n 2: Empleado \n 3: Salir");
+            opcion = int.Parse(Console.ReadLine());
+            if (opcion == 1){
+                cliente.Seleccionar(tienda, carrito, cliente, vendedor);
+            } else if (opcion == 2){
+                vendedor.Seleccionar(tienda, carrito, cliente, vendedor);
+            } else if (opcion == 3){
+                Console.WriteLine("Gracias por su visita");
+            } else {
+                Console.WriteLine("Ingrese una opcion valida");
             }
-                
         }
     }
+}
