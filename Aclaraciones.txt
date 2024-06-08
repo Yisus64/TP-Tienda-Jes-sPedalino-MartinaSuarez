@@ -1,0 +1,5 @@
+1) La contraseña para el modo empleado es "contraseña"
+2) Para compilar el programa se necesita escribir "mcs main.cs Producto.cs Tienda.cs Carrito.cs Cliente.cs Vendedor.cs" en la terminal
+3) Para ejecutarlo, se necesita escribir main.exe en la terminal
+4) La tienda ya tiene un listado de productos definidos
+5) La caja empieza con 2000000 
